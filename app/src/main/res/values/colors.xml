@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+
+    <color name="color_primary">#121433</color>
+    <color name="color_primary_dark">#0A0B1E</color>
+    <color name="color_secondary">#23265A</color>
+    <color name="color_secondary_light">#7023265A</color>
+    <color name="color_azercell">#5C2483</color>
+    <color name="blue">#2567F9</color>
+    <color name="yellow">#FFB017</color>
+    <color name="purple">#8225F9</color>
+    <color name="light_gray">#EDEDED</color>
+    <color name="light_red">#90B10000</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_700">#F7F6F2</color>
+    <color name="white_500">#C8C6C6</color>
+    <color name="white_300">#9D9D9D</color>
+    <color name="transparent">#00000000</color>
 </resources>
