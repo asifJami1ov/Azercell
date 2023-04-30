@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlinx-serialization'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -14,29 +17,93 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 
     buildTypes {
-        release {
+
+        debug {
             minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            testCoverageEnabled = false
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            resValue "string", "app_name", "Azercell Debug"
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            minifyEnabled true
+            resValue "string", "app_name", "Azercell"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha09"
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'androidx.databinding:databinding-runtime:8.0.0'
+    implementation 'com.android.databinding:library:8.0.0'
+
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    //SplashScreen
+    //noinspection GradleDependency
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    //Cryptography
+    implementation "androidx.security:security-crypto:1.1.0-alpha06"
+    //Serialization
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+    //di
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    //noinspection GradleDependency
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
+    //noinspection GradleDependency
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
+    //Custom EditText
+    implementation 'com.github.masaliev:masked-edittext:1.0.3'
+    //Fingerprint
+    implementation 'androidx.biometric:biometric:1.1.0'
+    //Custom Card Slider
+    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Shimmer Animation
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+
 }
