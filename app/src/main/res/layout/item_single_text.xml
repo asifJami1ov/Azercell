@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.task.azercell.model.Currency" />
+    </data>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_7"
+        android:backgroundTint="@color/color_secondary"
+        android:fontFamily="@font/proximanova_medium"
+        android:letterSpacing="0.05"
+        android:padding="16dp"
+        android:text="@{item.name()}"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</layout>
