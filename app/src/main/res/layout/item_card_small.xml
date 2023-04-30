@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.task.azercell.model.NumberLength" />
+
+        <variable
+            name="item"
+            type="com.task.azercell.model.CardModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_7"
+        android:backgroundTint="@color/color_secondary"
+        android:clickable="false"
+        android:focusable="false"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/cardImage"
+                android:layout_width="110dp"
+                android:layout_height="55dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:scaleX="1"
+                app:image="@{item.cardColor.drawableResId}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/cardType"
+                android:layout_width="wrap_content"
+                android:layout_height="14dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:scaleType="fitStart"
+                app:image="@{item.cardType.drawableResId12}"
+                app:layout_constraintStart_toStartOf="@+id/cardImage"
+                app:layout_constraintTop_toTopOf="@+id/cardImage" />
+
+            <TextView
+                android:id="@+id/cardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="4dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/proximanova_regular"
+                android:letterSpacing="0.1"
+                android:text="@{item.getHiddenCardNumber(NumberLength.SHORT)}"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage"
+                app:layout_constraintStart_toStartOf="@+id/cardImage"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/cardName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/proximanova_regular"
+                android:letterSpacing="0.01"
+                android:ellipsize="marquee"
+                android:text="@{item.cardName}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/expireDate"
+                app:layout_constraintStart_toEndOf="@+id/cardImage"
+                app:layout_constraintTop_toTopOf="@+id/cardImage"
+                app:layout_constraintEnd_toStartOf="@+id/amount"/>
+
+            <TextView
+                android:id="@+id/expireDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.02"
+                android:text="@{item.cardCVV}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage"
+                app:layout_constraintStart_toEndOf="@+id/cardImage"
+                app:layout_constraintTop_toBottomOf="@+id/cardName" />
+
+            <ImageView
+                android:id="@+id/dot1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@drawable/ic_dot"
+                app:layout_constraintBottom_toBottomOf="@+id/expireDate"
+                app:layout_constraintStart_toEndOf="@+id/expireDate"
+                app:layout_constraintTop_toTopOf="@+id/expireDate" />
+
+            <TextView
+                android:id="@+id/productType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.02"
+                android:text="@{item.productType.productName}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/expireDate"
+                app:layout_constraintStart_toEndOf="@+id/dot1"
+                app:layout_constraintTop_toTopOf="@+id/expireDate" />
+
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/proximanova_medium"
+                android:letterSpacing="0.02"
+                android:text="@{item.amountWithCurrencyChar}"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toTopOf="@id/cardImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

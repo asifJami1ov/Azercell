@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary"
+    tools:context=".ui.activity.TransferActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_payent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/back_button"
+                android:padding="5dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintBottom_toBottomOf="@id/header"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="@id/header" />
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_medium"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:paddingVertical="24dp"
+                android:text="@string/transfer"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/payFromText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/pay_from"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/header" />
+
+            <include
+                android:id="@+id/payFromCard"
+                layout="@layout/item_card_small_with_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/payFromText" />
+
+            <TextView
+                android:id="@+id/swap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bg_white_radius_20"
+                android:backgroundTint="@color/color_secondary_light"
+                android:drawablePadding="3dp"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="@string/swap"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:drawableStartCompat="@drawable/ic_swap"
+                app:drawableTint="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/payFromCard" />
+
+            <TextView
+                android:id="@+id/enrolToText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/enroll_to"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/enrolToCard"
+                app:layout_constraintStart_toStartOf="@id/guideline1" />
+
+            <include
+                android:id="@+id/enrolToCard"
+                layout="@layout/item_card_small_with_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/swap" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amountCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/color_secondary"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@id/currencyCard"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/enrolToCard">
+
+                <EditText
+                    android:id="@+id/transferAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:background="@drawable/bg_dark_radius_100"
+                    android:cursorVisible="true"
+                    android:fontFamily="@font/proximanova_thin"
+                    android:hint="@string/amount"
+                    android:inputType="numberSigned"
+                    android:letterSpacing="0.05"
+                    android:lines="1"
+                    android:maxLength="8"
+                    android:padding="20dp"
+                    android:textColor="@color/white_700"
+                    android:textColorHint="@color/white_700"
+                    android:textSize="16sp"
+                    android:theme="@style/CustomEditTextStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/colorRadioGroup" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/currencyCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="@color/color_secondary"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toEndOf="@id/amountCard"
+                app:layout_constraintTop_toBottomOf="@+id/enrolToCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/currencyText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/proximanova_thin"
+                        android:hint="@string/currency"
+                        android:padding="20dp"
+                        android:textColor="@color/white_700"
+                        android:textColorHint="@color/white_700"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/arrow2"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:rotation="270"
+                        android:src="@drawable/ic_arrow_left"
+                        app:tint="@color/white_500" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amount10Card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/color_secondary"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@id/amount20Card"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/amountCard">
+
+                <TextView
+                    android:id="@+id/amount10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/proximanova_thin"
+                    android:padding="10dp"
+                    android:text="@string/_10"
+                    android:textAlignment="center"
+                    android:textColor="@color/white_700"
+                    android:textSize="16sp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amount20Card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="@color/color_secondary"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/amount10Card"
+                app:layout_constraintEnd_toStartOf="@id/amount30Card"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/amount10Card"
+                app:layout_constraintTop_toTopOf="@+id/amount10Card">
+
+
+                <TextView
+                    android:id="@+id/amount20"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/proximanova_thin"
+                    android:padding="10dp"
+                    android:text="@string/_20"
+                    android:textAlignment="center"
+                    android:textColor="@color/white_700"
+                    android:textSize="16sp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amount30Card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/color_secondary"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/amount10Card"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/amount20Card"
+                app:layout_constraintTop_toTopOf="@+id/amount10Card">
+
+
+                <TextView
+                    android:id="@+id/amount30"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/proximanova_thin"
+                    android:padding="10dp"
+                    android:text="@string/_30"
+                    android:textAlignment="center"
+                    android:textColor="@color/white_700"
+                    android:textSize="16sp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/commissionCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/color_secondary"
+                android:visibility="gone"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/amount10Card">
+
+
+                <TextView
+                    android:id="@+id/commission"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/proximanova_thin"
+                    android:padding="20dp"
+                    android:text="@string/_1_00_azn"
+                    android:textColor="@color/white_700"
+                    android:textSize="16sp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_payent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_white_radius_20"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/proximanova_semibold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/continue_text"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginBottom="16dp"
+        android:indeterminateTint="@color/white"
+        android:progressTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
