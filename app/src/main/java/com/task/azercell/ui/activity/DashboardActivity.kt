@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
@@ -94,15 +93,14 @@ class DashboardActivity : AppCompatActivity(), CardAdapter.OnSliderItemClickList
         }
     }
 
-    private fun initHistoryRecycler() {
+    private fun initHistoryRecycler(delay:Long=1500) {
         binding.apply {
             lifecycleScope.launch {
-                Log.i("aaaa", "initHistoryRecycler: ")
                 binding.historyRecycler.visibility = View.INVISIBLE
                 binding.shimmer.root.visibility = View.VISIBLE
                 binding.shimmer.shimmerFrameLayout.startShimmerAnimation()
                 val deferred = lifecycleScope.async {
-                    delay(1500)
+                    delay(delay)
                     binding.shimmer.shimmerFrameLayout.stopShimmerAnimation()
                     binding.shimmer.root.visibility = View.GONE
                     binding.historyRecycler.visibility = View.VISIBLE
@@ -131,6 +129,7 @@ class DashboardActivity : AppCompatActivity(), CardAdapter.OnSliderItemClickList
                     super.onPageSelected(position)
                     currentCard = cardList[position]
                     cardName.text = currentCard.cardName
+                    initHistoryRecycler(700)
                 }
             })
             adapter.notifyDataSetChanged()

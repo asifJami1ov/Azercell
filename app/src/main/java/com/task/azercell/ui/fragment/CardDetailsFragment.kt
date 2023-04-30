@@ -314,7 +314,6 @@ class CardDetailsFragment(private val listener:OnFragmentRemoved) : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        Log.i("aaa", "onDetach: ")
         listener.onFragmentRemoved()
     }
 
