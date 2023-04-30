@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".ui.fragment.CardDetailsFragment">
+
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/back_button"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="@id/header" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proximanova_medium"
+        android:gravity="center"
+        android:letterSpacing="0.05"
+        android:paddingVertical="24dp"
+        android:text="@string/card_details"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/back_button"
+        android:padding="5dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="@id/header"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/header" />
+
+
+    <include
+        android:id="@+id/cardIcon"
+        layout="@layout/item_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <RadioGroup
+        android:id="@+id/colorRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardIcon">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@null"
+            android:button="@drawable/selector_radio_blue"
+
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="10dp" />
+
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/purple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:button="@drawable/selector_radio_purple"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="10dp" />
+
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@null"
+            android:button="@drawable/selector_radio_yellow"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
+
+    </RadioGroup>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/colorRadioGroup">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cardNameHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/card_name"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/cardNameField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:cursorVisible="true"
+                android:elevation="10dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:enabled="false"
+                android:fontFamily="@font/proximanova_thin"
+                android:inputType="text"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="18"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:translationZ="-1dp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardNameHeader" />
+
+
+            <ImageView
+                android:id="@+id/btnEditName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_edit"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardNameField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardNameField" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/card_number"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardNNumberField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardNNumberField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardNameField" />
+
+
+            <ImageView
+                android:id="@+id/btnCopyNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_copy"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardNNumberField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardNNumberField" />
+
+            <ImageView
+                android:id="@+id/btnShowNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_show"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardNNumberField"
+                app:layout_constraintEnd_toStartOf="@id/btnCopyNumber"
+                app:layout_constraintTop_toTopOf="@id/cardNNumberField" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/cvv"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardCvvField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardCvvField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardNNumberField" />
+
+
+            <ImageView
+                android:id="@+id/btnCopyCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_copy"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardCvvField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardCvvField" />
+
+            <ImageView
+                android:id="@+id/btnShowCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_show"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardCvvField"
+                app:layout_constraintEnd_toStartOf="@id/btnCopyNumber"
+                app:layout_constraintTop_toTopOf="@id/cardCvvField" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/expire_date"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardExpireDateField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardExpireDateField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardCvvField" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/holder_name"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardHolderNameField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardHolderNameField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardExpireDateField" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/product_type"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardProductTypeField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardProductTypeField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardHolderNameField" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/proximanova_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/card_type"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardCardTypeField"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cardCardTypeField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="35dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_radius_7"
+                android:backgroundTint="@color/color_secondary"
+                android:elevation="10dp"
+                android:fontFamily="@font/proximanova_thin"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/white_700"
+                android:textColorHint="@color/white_300"
+                android:textSize="16sp"
+                android:theme="@style/CustomEditTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardProductTypeField" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_white_radius_20"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/proximanova_semibold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
