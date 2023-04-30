@@ -1,5 +1,6 @@
 package com.task.azercell.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
@@ -120,6 +121,7 @@ class DashboardActivity : AppCompatActivity(), CardAdapter.OnSliderItemClickList
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initCardSlider() {
         binding.apply {
             val adapter = CardAdapter(cardList, this@DashboardActivity)
@@ -131,6 +133,8 @@ class DashboardActivity : AppCompatActivity(), CardAdapter.OnSliderItemClickList
                     cardName.text = currentCard.cardName
                 }
             })
+            adapter.notifyDataSetChanged()
+
         }
     }
 
@@ -217,6 +221,7 @@ class DashboardActivity : AppCompatActivity(), CardAdapter.OnSliderItemClickList
 
     override fun onFragmentRemoved() {
         viewModel.loadCardList()
+
     }
 
 

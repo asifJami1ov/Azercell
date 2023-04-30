@@ -18,6 +18,11 @@ enum class Currency {
     EUR
 }
 
+enum class CardPurpose {
+    PAY_FROM,
+    ENROLL_TO
+}
+
 @kotlinx.serialization.Serializable
 enum class ProductType(val productName: String) {
     PLATINUM("Platinum"),

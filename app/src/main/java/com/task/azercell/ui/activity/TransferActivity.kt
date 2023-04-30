@@ -17,8 +17,8 @@ import com.task.azercell.databinding.ItemCardSmallBinding
 import com.task.azercell.databinding.ItemCardSmallWithHolderBinding
 import com.task.azercell.databinding.ItemSingleTextBinding
 import com.task.azercell.model.CardModel
+import com.task.azercell.model.CardPurpose
 import com.task.azercell.model.Currency
-import com.task.azercell.ui.CardPurpose
 import com.task.azercell.ui.bottomsheet.CustomSelectBottomSheetFragment
 import com.task.azercell.util.*
 import com.task.azercell.util.Helpers.format

@@ -17,6 +17,7 @@ import com.task.azercell.birthPattern
 import com.task.azercell.databinding.FragmentSignUpBinding
 import com.task.azercell.onTextChangeListener
 import com.task.azercell.phonePattern
+import com.task.azercell.ui.activity.DashboardActivity
 import com.task.azercell.util.FingerprintUtil
 import com.task.azercell.util.PatternInputFilter
 import com.task.azercell.viewmodel.SignUpViewModel
